@@ -15,12 +15,24 @@ builder.Services.AddScoped<ListPropertiesHandler>();
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
+}
+
+// Habilitar Swagger en todos los entornos
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "RealEstate API v1");
     c.RoutePrefix = "swagger"; // URL: /swagger
 });
+
 
 // Solo usar HTTPS redirection en producción
 if (!app.Environment.IsDevelopment())
