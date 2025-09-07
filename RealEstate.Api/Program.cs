@@ -22,11 +22,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Solo usar HTTPS redirection en producción
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.MapGet("/", () => "API conectada a Mongo Atlas ✔️");
 
 // Mapear controllers
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();

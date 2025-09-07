@@ -2,7 +2,7 @@ namespace RealEstate.Domain.Entities;
 
 public class Owner
 {
-    public string Id { get; private set; }
+    public string Id { get; }
     public string Name { get; private set; }
     public string Address { get; private set; }
     public string? Photo { get; private set; }
