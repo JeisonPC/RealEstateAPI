@@ -8,7 +8,20 @@ public class MongoContext
 
     public MongoContext(MongoSettings settings)
     {
-        var client = new MongoClient(settings.ConnectionString);
+        // Configurar las opciones del cliente MongoDB con SSL
+        var clientSettings = MongoClientSettings.FromConnectionString(settings.ConnectionString);
+        
+        // Configuración específica para SSL en contenedores Linux
+        clientSettings.SslSettings = new SslSettings
+        {
+            EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
+        };
+        
+        // Configurar timeouts
+        clientSettings.ConnectTimeout = TimeSpan.FromSeconds(30);
+        clientSettings.ServerSelectionTimeout = TimeSpan.FromSeconds(30);
+        
+        var client = new MongoClient(clientSettings);
         Db = client.GetDatabase(settings.Database);
     }
 }
