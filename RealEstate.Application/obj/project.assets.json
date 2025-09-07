@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "RealEstate.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/RealEstate.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RealEstate.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RealEstate.Domain/1.0.0": {
+      "type": "project",
+      "path": "../RealEstate.Domain/RealEstate.Domain.csproj",
+      "msbuildProject": "../RealEstate.Domain/RealEstate.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "RealEstate.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/jeison.poveda/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/jeison.poveda/Documents/test/TechnicalTest/RealEstate.Application/RealEstate.Application.csproj",
+      "projectName": "RealEstate.Application",
+      "projectPath": "/Users/jeison.poveda/Documents/test/TechnicalTest/RealEstate.Application/RealEstate.Application.csproj",
+      "packagesPath": "/Users/jeison.poveda/.nuget/packages/",
+      "outputPath": "/Users/jeison.poveda/Documents/test/TechnicalTest/RealEstate.Application/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/jeison.poveda/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/Users/jeison.poveda/Documents/test/TechnicalTest/RealEstate.Domain/RealEstate.Domain.csproj": {
+              "projectPath": "/Users/jeison.poveda/Documents/test/TechnicalTest/RealEstate.Domain/RealEstate.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
