@@ -2,7 +2,7 @@ namespace RealEstate.Domain.Entities;
 
 public class Owner
 {
-    public string Id { get; }
+    public string Id { get; private set; }
     public string Name { get; private set; }
     public string Address { get; private set; }
     public string? Photo { get; private set; }
@@ -11,9 +11,20 @@ public class Owner
     // Constructor (para crear un nuevo Owner)
     public Owner(string name, string address, string? photo = null, DateOnly? birthday = null)
     {
-        SetName(name);
-        SetAddress(address);
+        Id = Guid.NewGuid().ToString(); // Generar ID único
+        Name = string.IsNullOrWhiteSpace(name) ? throw new ArgumentException("Name is required") : name.Trim();
+        Address = string.IsNullOrWhiteSpace(address) ? throw new ArgumentException("Address is required") : address.Trim();
         Photo = string.IsNullOrWhiteSpace(photo) ? null : photo.Trim();
+        Birthday = birthday;
+    }
+
+    // Constructor para reconstruir desde base de datos
+    public Owner(string id, string name, string address, string? photo = null, DateOnly? birthday = null)
+    {
+        Id = id;
+        Name = name;
+        Address = address;
+        Photo = photo;
         Birthday = birthday;
     }
 
