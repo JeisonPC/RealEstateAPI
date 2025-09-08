@@ -12,6 +12,20 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<GetPropertyHandler>();
 builder.Services.AddScoped<ListPropertiesHandler>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("web", policy =>
+        policy
+            .WithOrigins(
+                "http://localhost:3000",           
+                "https://real-estate-million.netlify.app/"      
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            // .AllowCredentials() // solo si usas cookies/sesión; si no, quítalo
+    );
+});
+
 
 var app = builder.Build();
 
@@ -39,6 +53,8 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
+
+app.UseCors("web");
 
 app.MapGet("/", () => "API conectada a Mongo Atlas ✔️");
 

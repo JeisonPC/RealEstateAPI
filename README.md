@@ -138,12 +138,14 @@ El proyecto sigue los principios de **Clean Architecture**:
 ### 🔧 Instalación
 
 1. **Clonar el repositorio**
+
    ```bash
    git clone https://github.com/JeisonPC/RealEstateAPI.git
    cd RealEstateAPI
    ```
 
 2. **Restaurar dependencias**
+
    ```bash
    dotnet restore
    ```
@@ -158,6 +160,7 @@ El proyecto sigue los principios de **Clean Architecture**:
 #### Desarrollo Local (User Secrets)
 
 1. **Inicializar User Secrets** (solo la primera vez)
+
    ```bash
    cd RealEstate.Api
    dotnet user-secrets init
@@ -186,6 +189,7 @@ dotnet run --project RealEstate.Api --configuration Release
 ```
 
 La API estará disponible en:
+
 - **HTTP**: http://localhost:5163
 - **Swagger UI**: http://localhost:5163/swagger
 
@@ -193,25 +197,28 @@ La API estará disponible en:
 
 ### 🏠 Properties
 
-| Método | Endpoint | Descripción | Parámetros |
-|--------|----------|-------------|------------|
-| `GET` | `/` | Health check | - |
-| `GET` | `/api/properties` | Listar propiedades | `name`, `address`, `minPrice`, `maxPrice`, `page`, `pageSize` |
-| `GET` | `/api/properties/{id}` | Obtener propiedad por ID | `id` (string) |
+| Método | Endpoint               | Descripción              | Parámetros                                                    |
+| ------ | ---------------------- | ------------------------ | ------------------------------------------------------------- |
+| `GET`  | `/`                    | Health check             | -                                                             |
+| `GET`  | `/api/properties`      | Listar propiedades       | `name`, `address`, `minPrice`, `maxPrice`, `page`, `pageSize` |
+| `GET`  | `/api/properties/{id}` | Obtener propiedad por ID | `id` (string)                                                 |
 
 #### Ejemplos de Uso
 
 **Listar todas las propiedades:**
+
 ```bash
 curl -X GET "https://api.realestate.com/api/properties"
 ```
 
 **Filtrar propiedades:**
+
 ```bash
 curl -X GET "https://api.realestate.com/api/properties?name=casa&minPrice=100000&maxPrice=500000&page=1&pageSize=10"
 ```
 
 **Obtener propiedad específica:**
+
 ```bash
 curl -X GET "https://api.realestate.com/api/properties/64f8a1b2c3d4e5f6g7h8i9j0"
 ```
@@ -241,15 +248,17 @@ curl -X GET "https://api.realestate.com/api/properties/64f8a1b2c3d4e5f6g7h8i9j0"
 ### 🗄️ Base de Datos
 
 **Colecciones de MongoDB:**
+
 - `properties` - Información de propiedades
 - `propertyImages` - Imágenes asociadas a propiedades
 
 **Índices Recomendados:**
+
 ```javascript
 // En MongoDB Compass o Shell
-db.properties.createIndex({ "name": "text", "address": "text" })
-db.properties.createIndex({ "price": 1 })
-db.propertyImages.createIndex({ "idProperty": 1, "enabled": 1 })
+db.properties.createIndex({ name: "text", address: "text" });
+db.properties.createIndex({ price: 1 });
+db.propertyImages.createIndex({ idProperty: 1, enabled: 1 });
 ```
 
 ### 🧪 Ejecutar Tests
@@ -270,11 +279,13 @@ dotnet test --filter "ClassName=OwnerTests"
 ### 🐳 Docker
 
 **Construir imagen:**
+
 ```bash
 docker build -t realestate-api .
 ```
 
 **Ejecutar contenedor:**
+
 ```bash
 docker run -d \
   -p 8080:80 \
@@ -295,10 +306,11 @@ docker run -d \
    ASPNETCORE_ENVIRONMENT=Production
    ```
 5. Usa estos comandos de build:
+
    ```bash
    # Build Command:
    dotnet publish -c Release -o out
-   
+
    # Start Command:
    dotnet out/RealEstate.Api.dll
    ```
