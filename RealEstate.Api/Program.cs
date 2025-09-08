@@ -18,11 +18,10 @@ builder.Services.AddCors(options =>
         policy
             .WithOrigins(
                 "http://localhost:3000",           
-                "https://real-estate-million.netlify.app/"      
+                "https://real-estate-million.netlify.app"      
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
-            // .AllowCredentials() // solo si usas cookies/sesión; si no, quítalo
     );
 });
 
